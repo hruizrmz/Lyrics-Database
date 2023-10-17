@@ -6,53 +6,37 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <title>Lyrics Viewer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="scripts.js"></script>
 </head>
-<body>  
-    <?php
-        include "db-connect.php";
-        $query = "SELECT * FROM mydb.songs WHERE title='Desvelado'";
-        $res = mysqli_query($connection, $query);
-        echo "<div class='container'>";
-        if (mysqli_num_rows($res) > 0) {
-            $row = mysqli_fetch_array($res);
-            echo '<iframe class="responsive-iframe" src="https://www.youtube.com/embed/qyMp1ADlRD8" frameborder="0"></iframe>';
-            echo "</div>";
-            echo "<h1>".$row["title"]."</h1>";
-            echo "<h2>".$row["artist"]."</h2>";
-            echo "<img src='song-covers/".$row["cover"]."' alt='".$row["cover-alt-text"]."' >";
-            $connection->close();
-        }
-    ?>
-
-    <section>
-        <p>
-            Será fe que yo encontré
-            <br>Una voz de ternura
-            <br>Que me llena de placer
-            <br>Cuando la oigo hablar
+<body>
+    <div class="song-search">
+        <!-- search id -->
+        <label for="results_query">Search By...</label><br>
+            <select name="results_query" id="results_query">
+                <option value=""></option>
+                <option value="title">Song Title</option>;
+                <option value="artist">Artist</option>;
+                <option value="genre">Genre</option>;
+            </select>
+        <input type="text" name="lyrics_query" id="lyrics_query" minlength="1" maxlength="40">
+        <button onclick="showResults(document.getElementById('results_query').value, document.getElementById('lyrics_query').value)">Search</button>
+        <br>
+        <!-- results box -->
+        <div class="song-results" id="song-results">
             <br>
-            <br>Con ella me enamoré
-            <br>Que nunca la conocí
-            <br>Sueño en su querer
-            <br>Y en sus brazos quiero dormir
-            <br>
-            <br>Escucho cada día la radio
-            <br>Seguro que la vuelvo a oír
-            <br>Por el cielo busco mi estrella
-            <br>A la luna quiero subir
-            <br>
-            <br>Voy desvelado
-            <br>Por estas calles esperando encontrar
-            <br>A esa voz de ángel que quiero amar
-            <br>¿Dónde andará?
-            <br>Voy desvelado
-            <br>Y mi deseo no me deja descansar
-            <br>Porque despierto y no me pongo a llorar
-            <br>Yo seguiré, desvelado y sin amor
-            <br>
-            <br>&hearts;
-        </p>
-    </section>
+            <select size=4>
+            </select>
+        </div>
+        <!-- new song -->
+        <br>
+        <button onclick="window.location.href='submit-song.php'">Add a new song</button>
+    </div>
+    <div class="song-lyrics">
+    </div>
+    <div class="song-info" id="song-info">
+    <br>
+    </div>
 </body>
 </html>

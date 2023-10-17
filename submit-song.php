@@ -12,19 +12,19 @@
 <body>
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <label for="title">Song Title: </label>
-            <input type="text" name="title" id="title" required minlength="1" maxlength="40">
+            <input type="text" name="title" id="title" required minlength="1" maxlength="80">
         <br>
         <label for="artist">Artist: </label>
-            <input type="text" name="artist" id="artist" required minlength="1" maxlength="40">
+            <input type="text" name="artist" id="artist" required minlength="1" maxlength="80">
         <br>
         <label for="album">Album: </label>
-            <input type="text" name="album" id="album" minlength="1" maxlength="40"> 
+            <input type="text" name="album" id="album" minlength="1" maxlength="80"> 
         <br><br>
         <label for="cover">Album Cover: </label>
-            <input type="file" name="cover" id="cover" accept=".jpg, .jpeg, .png, .hfif" required>
+            <input type="file" name="cover" id="cover" accept=".jpg, .jpeg, .png" required>
         <br>
         <label for="alt_text">Alt-Text: </label>
-            <input type="text" name="alt_text" id="alt_text" minlength="1" maxlength="40">
+            <input type="text" name="alt_text" id="alt_text" minlength="1" maxlength="80">
         <br><br>
         <label for="genre">Genre: </label>
             <select name="genre" id="genre" onchange="genreSelectCheck(this);" required>
@@ -49,6 +49,9 @@
         <br><br>
         <label for="link">YouTube Link: </label>
             <input type="url" name="link" id="link" required>
+        <br>
+        <label for="cover">Lyrics: </label>
+            <input type="file" name="lyrics" id="lyrics" accept=".txt" required>
         <br><br>
         <button type="submit" name="submit_song">Create New Song Entry</button>
         <br><br>

@@ -31,6 +31,15 @@ function showLyrics(songID)
         };
         xmlhttp.open("GET","load-song.php?songID="+songID,true);
         xmlhttp.send();
+
+        var xmlhttp2 = new XMLHttpRequest();
+        xmlhttp2.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("song-lyrics").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp2.open("GET","load-lyrics.php?songID="+songID,true);
+        xmlhttp2.send();
     }
 }
 

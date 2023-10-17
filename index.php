@@ -33,7 +33,7 @@
         <br>
         <button onclick="window.location.href='submit-song.php'">Add a new song</button>
     </div>
-    <div class="song-lyrics">
+    <div class="song-lyrics" id="song-lyrics">
     </div>
     <div class="song-info" id="song-info">
     <br>

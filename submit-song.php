@@ -10,7 +10,7 @@
     <script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="php/upload.php" method="post" enctype="multipart/form-data">
         <label for="title">Song Title: </label>
             <input type="text" name="title" id="title" required minlength="1" maxlength="80">
         <br>
@@ -18,18 +18,18 @@
             <input type="text" name="artist" id="artist" required minlength="1" maxlength="80">
         <br>
         <label for="album">Album: </label>
-            <input type="text" name="album" id="album" minlength="1" maxlength="80"> 
+            <input type="text" name="album" id="album" required minlength="1" maxlength="80"> 
         <br><br>
         <label for="cover">Album Cover: </label>
-            <input type="file" name="cover" id="cover" accept=".jpg, .jpeg, .png" required>
+            <input type="file" name="cover" id="cover" required accept=".jpg, .jpeg, .png">
         <br>
         <label for="alt_text">Alt-Text: </label>
             <input type="text" name="alt_text" id="alt_text" minlength="1" maxlength="80">
         <br><br>
         <label for="genre">Genre: </label>
-            <select name="genre" id="genre" onchange="genreSelectCheck(this);" required>
+            <select name="genre" id="genre" required onchange="genreSelectCheck(this);">
                 <?php
-                    include "db-connect.php";
+                    include "php/db-connect.php";
                     $query = "SELECT * FROM mydb.genres";
                     $res = mysqli_query($connection, $query);
                     echo '<option value="-1"></option>';
@@ -51,7 +51,7 @@
             <input type="url" name="link" id="link" required>
         <br>
         <label for="cover">Lyrics: </label>
-            <input type="file" name="lyrics" id="lyrics" accept=".txt" required>
+            <input type="file" name="lyrics" id="lyrics" required accept=".txt">
         <br><br>
         <button type="submit" name="submit_song">Create New Song Entry</button>
         <br><br>

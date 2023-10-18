@@ -25,7 +25,7 @@
             mysqli_query($connection, $sql);
             if (mysqli_errno($connection) == 1062) {
                 echo '<script>alert("Sorry, that genre already exists!")</script>';
-                echo '<script>window.location.replace("submit-song.php")</script>';
+                echo '<script>window.location.replace("../submit-song.php")</script>';
                 exit;
             }
         }
@@ -39,7 +39,7 @@
         }
         else {
             echo '<script>alert("Sorry, please use a different youtube link!")</script>';
-            echo '<script>window.location.replace("submit-song.php")</script>';
+            echo '<script>window.location.replace("../submit-song.php")</script>';
             exit;
         }
         
@@ -77,11 +77,11 @@
                                 }
                                 else {
                                     echo '<script>alert("Song uploaded!")</script>';
-                                    $cover_upload_path = "song-covers/".$new_cover_name;
+                                    $cover_upload_path = "../song-covers/".$new_cover_name;
                                     move_uploaded_file($tmp_cover_name, $cover_upload_path);
-                                    $lyrics_upload_path = "lyrics/".$new_lyrics_name;
+                                    $lyrics_upload_path = "../lyrics/".$new_lyrics_name;
                                     move_uploaded_file($tmp_lyrics_name, $lyrics_upload_path);
-                                    echo '<script>window.location.replace("index.php")</script>';
+                                    echo '<script>window.location.replace("../index.php")</script>';
                                     exit;
                                 }
                             }
@@ -104,6 +104,6 @@
         }
     }
 
-    echo '<script>window.location.replace("submit-song.php")</script>';
+    echo '<script>window.location.replace("../submit-song.php")</script>';
     $connection->close();
 ?>

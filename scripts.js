@@ -19,20 +19,14 @@ function genreSelectCheck(nameSelect)
 // https://www.w3schools.com/php/php_ajax_database.asp
 function showResults(resultsQuery, lyricsQuery) 
 {
-    if (resultsQuery == "" || lyricsQuery == "") {
-        document.getElementById("song-results").innerHTML = "";
-        return;
-    }
-    else {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("song-results").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","load-results.php?resultsQuery="+resultsQuery+"&lyricsQuery="+lyricsQuery,true);
-        xmlhttp.send();
-    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("song-results").innerHTML = this.responseText;
+        }
+    };
+    xmlhttp.open("GET","php/load-results.php?resultsQuery="+resultsQuery+"&lyricsQuery="+lyricsQuery,true);
+    xmlhttp.send();
 }
 
 function showLyrics(songID) 
@@ -48,7 +42,7 @@ function showLyrics(songID)
             document.getElementById("song-info").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","load-song.php?songID="+songID,true);
+        xmlhttp.open("GET","php/load-song.php?songID="+songID,true);
         xmlhttp.send();
 
         var xmlhttp2 = new XMLHttpRequest();
@@ -57,7 +51,7 @@ function showLyrics(songID)
             document.getElementById("song-lyrics").innerHTML = this.responseText;
             }
         };
-        xmlhttp2.open("GET","load-lyrics.php?songID="+songID,true);
+        xmlhttp2.open("GET","php/load-lyrics.php?songID="+songID,true);
         xmlhttp2.send();
     }
 }

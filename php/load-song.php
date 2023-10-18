@@ -12,7 +12,8 @@
         echo "</div><br>";
         echo "<h1>".$row["title"]."</h1>";
         echo "<h2>".$row["artist"]."</h2>";
-        echo "<img src='song-covers/".$row["cover"]."' alt='".$row["cover-alt-text"]."' onload='setBGColor()'>";
-        $connection->close();
+        echo "<img src='../song-covers/".$row["cover"]."' alt='".$row["cover-alt-text"]."' onload='setBGColor()'>";
+        echo "<h2>Album: ".$row["album"]." - Genre: ".$row["genre"]."</h1>";
     }
+    $connection->close();
 ?>

@@ -22,18 +22,41 @@
                 <option value="artist">Artist</option>;
                 <option value="genre">Genre</option>;
             </select>
-        <input type="text" name="lyrics_query" id="lyrics_query" minlength="1" maxlength="40">
+        <input type="search" name="lyrics_query" id="lyrics_query" minlength="1" maxlength="80">
         <button onclick="showResults(document.getElementById('results_query').value, document.getElementById('lyrics_query').value)">Search</button>
         <br>
         <!-- results box -->
         <div class="song-results" id="song-results">
-            <br>
-            <select size=4>
-            </select>
-        </div>
-        <!-- new song -->
         <br>
-        <button onclick="window.location.href='submit-song.php'">Add a new song</button>
+        <select name="search_results" id="search_results" size=4 onchange="showLyrics(this.value)">
+        <?php
+            include "php/db-connect.php";            
+            $query = "SELECT * FROM mydb.songs";
+            $res = mysqli_query($connection, $query);
+            while ($row = $res->fetch_assoc()) {
+                echo '<option value="'.$row['id'].'">';
+                echo $row['title']." by ".$row['artist'];
+                echo '</option>';
+            }
+            $connection->close();
+        ?>
+        </select>
+        </div>
+        <!-- buttons -->
+        <br>
+        <script>
+            function clicked(e)
+            {
+                if(confirm('Are you sure?')) {
+                    window.location.href="php/delete-song.php?songID="+document.getElementById('search_results').value;
+                }
+                else {
+                    return false;
+                }
+            }
+        </script>
+        <button name="delete_song" onclick="clicked(event)">Delete this song</button>
+        <button onclick="window.location.href='submit-song.php'">Add another song</button>
     </div>
     <div class="song-lyrics" id="song-lyrics">
     </div>

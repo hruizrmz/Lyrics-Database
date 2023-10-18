@@ -1,6 +1,6 @@
 <?php
     include "db-connect.php";
-    
+
     $song_id = intval($_GET['songID']);
 
     $query = "SELECT * FROM mydb.songs WHERE id=".$song_id;
@@ -12,7 +12,7 @@
         echo "</div><br>";
         echo "<h1>".$row["title"]."</h1>";
         echo "<h2>".$row["artist"]."</h2>";
-        echo "<img src='song-covers/".$row["cover"]."' alt='".$row["cover-alt-text"]."' >";
+        echo "<img src='song-covers/".$row["cover"]."' alt='".$row["cover-alt-text"]."' onload='setBGColor()'>";
         $connection->close();
     }
 ?>

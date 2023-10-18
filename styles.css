@@ -2,8 +2,9 @@
     text-align: center;
 }
 
-body {
-    background-color: pink;
+.body {
+    color: black;
+    background-color: white;
 }
 
 .button {

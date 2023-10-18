@@ -7,7 +7,11 @@
     $res = mysqli_query($connection, $query);
     if (mysqli_num_rows($res) > 0) {
         $row = mysqli_fetch_array($res);
-        echo '<object data="lyrics/'.$row["lyrics"].'" width="300" height="200">Not supported</object>';
+        $fh = fopen("lyrics/".$row['lyrics'], 'r');
+        $pageText = fread($fh, 25000);
+        echo "<p>";
+        echo nl2br($pageText);
+        echo "</p>";
         $connection->close();
     }
 ?>

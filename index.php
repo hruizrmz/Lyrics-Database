@@ -10,13 +10,13 @@
     <!-- color picker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 </head>
-<body>
+<body class="body">
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-md-3 ">
+        <div class="row">
+            <div class="col-md-3">
                 <div class="song-search">
                     <!-- search by -->
-                    <label class="h2" for="results_query">Search By... </label>
+                    <h2><label for="results_query">Search By... </label></h2>
                         <select name="results_query" id="results_query">
                             <option value=""></option>
                             <option value="title">Song Title</option>;
@@ -31,7 +31,7 @@
                     <br>
                     <!-- results box -->
                     <div class="song-results" id="song-results">
-                    <select name="search_results" id="search_results" size=4 onchange="showLyrics(this.value)">
+                    <select class="song-select" name="search_results" id="search_results" size=4 width="100" onchange="showLyrics(this.value)">
                     <?php
                         include "php/db-connect.php";            
                         $query = "SELECT * FROM mydb.songs";
@@ -65,11 +65,11 @@
                     <button onclick="window.location.href='submit-song.php'">Add another song</button>
                 </div>
             </div>
-            <div class="col-lg-5">
+            <div class="col-md-5">
                 <div class="song-lyrics" id="song-lyrics">
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <div class="song-info" id="song-info">
                 </div>
             </div>

@@ -9,15 +9,27 @@
     <script type="text/javascript" src="scripts.js"></script>
     <!-- color picker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <style>
+        .container-xl {
+            padding: 0px;
+        }
+        input {
+            width: 100%;
+        }
+        .row {
+            --bs-gutter-x: 0;
+        }
+    </style>
 </head>
 <body class="body">
-    <div class="container-fluid">
-        <div class="row">
+    <header class="fixed-top"><h2>Welcome to your lyric database!</h2></header>
+    <div class="container-xl">
+        <div class="row align-items-center" style="height: 100vh;">
             <div class="col-md-3">
                 <div class="song-search">
                     <!-- search by -->
                     <h2><label for="results_query">Search By... </label></h2>
-                        <select name="results_query" id="results_query">
+                        <select name="results_query" id="results_query" style="width: 70%;">
                             <option value=""></option>
                             <option value="title">Song Title</option>;
                             <option value="artist">Artist</option>;
@@ -31,7 +43,7 @@
                     <br>
                     <!-- results box -->
                     <div class="song-results" id="song-results">
-                    <select class="song-select" name="search_results" id="search_results" size=4 width="100" onchange="showLyrics(this.value)">
+                    <select class="song-select" name="search_results" id="search_results" size=4 style="width: 100%;" onchange="showLyrics(this.value)">
                     <?php
                         include "php/db-connect.php";            
                         $query = "SELECT * FROM mydb.songs";
@@ -52,7 +64,7 @@
                     <script>
                         function clicked(e)
                         {
-                            if(confirm('Are you sure?')) {
+                            if(confirm('Are you sure you want to delete the selected song?')) {
                                 window.location.href="php/delete-song.php?songID="+document.getElementById('search_results').value;
                             }
                             else {
@@ -75,6 +87,9 @@
             </div>
         </div>
     </div>
+    <footer class="fixed-bottom">
+        <p><a href="https://www.istockphoto.com/photo/microphone-against-blur-on-beverage-in-pub-and-restaurant-background-gm1141693171-305966842">Background by Vershinin on iStock</a></p>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

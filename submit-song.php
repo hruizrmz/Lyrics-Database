@@ -93,8 +93,7 @@
         </div>
     </div>
     <footer class="fixed-bottom">
-        <p><a href="https://www.istockphoto.com/photo/microphone-against-blur-on-beverage-in-pub-and-restaurant-background-gm1141693171-305966842">Photo uploaded by Vershinin to iStock</a></p>
-    </footer>
-        
+        <p><a href="https://www.istockphoto.com/photo/microphone-against-blur-on-beverage-in-pub-and-restaurant-background-gm1141693171-305966842">Background by Vershinin on iStock</a></p>
+    </footer>    
 </body>
 </html>

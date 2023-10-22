@@ -9,6 +9,7 @@ function genreSelectCheck(nameSelect)
         }
         else {
             document.getElementById("otherGenreDiv").style.display = "none";
+            document.getElementById("other_genre").required = false;
         }
     }
     else {
@@ -98,10 +99,8 @@ function setBGColor() {
     const color2 = palette[1];
 
     if (contrast(color1,color2) >= 4) {
-        document.getElementById("song-lyrics").style.backgroundColor = `rgb(${color1})`;
+        document.body.style.background = `rgb(${color1})`;
         document.getElementById("song-lyrics").style.color = `rgb(${color2})`;
-
-        document.getElementById("song-info").style.backgroundColor = `rgb(${color1})`;
         document.getElementById("song-info").style.color = `rgb(${color2})`;
     }
     else {
@@ -109,17 +108,13 @@ function setBGColor() {
         const black = [0, 0, 0];
 
         if (contrast(white,color1) >= 4) {
-            document.getElementById("song-lyrics").style.backgroundColor = `rgb(${color1})`;
+            document.body.style.background = `rgb(${color1})`;
             document.getElementById("song-lyrics").style.color = `rgb(${white})`;
-
-            document.getElementById("song-info").style.backgroundColor = `rgb(${color1})`;
             document.getElementById("song-info").style.color = `rgb(${white})`;
         }
         else {
-            document.getElementById("song-lyrics").style.backgroundColor = `rgb(${color1})`;
+            document.body.style.background = `rgb(${color1})`;
             document.getElementById("song-lyrics").style.color = `rgb(${black})`;
-
-            document.getElementById("song-info").style.backgroundColor = `rgb(${color1})`;
             document.getElementById("song-info").style.color = `rgb(${black})`;
         }
     }
